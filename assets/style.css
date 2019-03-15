@@ -1,0 +1,23 @@
+.jumbotron {
+    text-align: center;
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+}
+
+#current-action {
+    margin: 0, auto;
+    text-align: center;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card {
+    min-height: 200px;
+}
