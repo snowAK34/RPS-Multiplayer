@@ -13,14 +13,14 @@ $(document).ready(function () {
 
   const database = firebase.database();
 
-  let playerOne;
-  let playerTwo;
-  let playerOneChoice;
-  let playerTwoChoice;
-  let playerOneWins = 0;
-  let playerOneLosses = 0;
-  let playerTwoWins = 0;
-  let playerTwoLosses = 0;
+  var playerOne;
+  var playerTwo;
+  var playerOneChoice;
+  var playerTwoChoice;
+  var playerOneWins = 0;
+  var playerOneLosses = 0;
+  var playerTwoWins = 0;
+  var playerTwoLosses = 0;
 
   function selectPlayerOne() {
     playerOneWins = 0;
@@ -33,10 +33,10 @@ $(document).ready(function () {
       secondName: "",
       firstChoice: "",
       secondChoice: "",
-      firstWins: playerOneWins,
-      firstLosses: playerOneLosses,
-      secondWins: playerTwoWins,
-      secondLosses: playerTwoLosses
+      firstWins: 0,
+      firstLosses: 0,
+      secondWins: 0,
+      secondLosses: 0
     });
 
     $("#player-two").empty();
@@ -60,7 +60,7 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref('firstName').on("value", function (snapshot) {
+      database.ref().on("value", function (snapshot) {
         playerOne = snapshot.val().firstName;
       });
       selectPlayerTwo()
@@ -88,7 +88,7 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref('secondName').on("value", function (snapshot) {
+      database.ref().on("value", function (snapshot) {
         playerTwo = snapshot.val().secondName;
       });
       playerOnePlays()
@@ -116,7 +116,7 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref('firstChoice').on("value", function (snapshot) {
+      database.ref().on("value", function (snapshot) {
         playerOneChoice = snapshot.val().firstChoice;
       });
       playerTwoPlays()
@@ -143,7 +143,7 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref('secondChoice').on("value", function (snapshot) {
+      database.ref().on("value", function (snapshot) {
         playerTwoChoice = snapshot.val().secondChoice;
       });
       results();
@@ -220,19 +220,19 @@ $(document).ready(function () {
     }
   }
 
-  database.ref('firstWins').on("value", function (snapshot) {
+  database.ref().on("value", function (snapshot) {
     playerOneWins = snapshot.val().firstWins;
     $("#p1-wins").text("Wins: " + snapshot.val());
   });
-  database.ref('firstLosses').on("value", function (snapshot) {
+  database.ref().on("value", function (snapshot) {
     playerOneLosses = snapshot.val().firstLosses;
     $("#p1-losses").text("Losses: " + snapshot.val());
   });
-  database.ref('secondWins').on("value", function (snapshot) {
+  database.ref().on("value", function (snapshot) {
     playerTwoWins = snapshot.val().secondWins;
     $("#p2-wins").text("Wins: " + snapshot.val());
   });
-  database.ref('secondLosses').on("value", function (snapshot) {
+  database.ref().on("value", function (snapshot) {
     playerTwoLosses = snapshot.val().secondLosses;
     $("#p2-losses").text("Losses: " + snapshot.val());
   });
