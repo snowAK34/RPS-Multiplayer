@@ -59,10 +59,9 @@ $(document).ready(function () {
         secondWins: playerTwoWins,
         secondLosses: playerTwoLosses
       });
-
-      database.ref("firstName").on("value", function (snapshot) {
-        playerOne = snapshot.val();
-      });
+    });
+    database.ref("firstName").on("value", function (snapshot) {
+      playerOne = snapshot.val();
       selectPlayerTwo()
     });
   }
@@ -87,10 +86,9 @@ $(document).ready(function () {
         secondWins: playerTwoWins,
         secondLosses: playerTwoLosses
       });
-
-      database.ref("secondName").on("value", function (snapshot) {
-        playerTwo = snapshot.val();
-      });
+    });
+    database.ref("secondName").on("value", function (snapshot) {
+      playerTwo = snapshot.val();
       playerOnePlays()
     });
   }
@@ -114,11 +112,10 @@ $(document).ready(function () {
         firstLosses: playerOneLosses,
         secondWins: playerTwoWins,
         secondLosses: playerTwoLosses
-      });
-
-      database.ref("firstChoice").on("value", function (snapshot) {
-        playerOneChoice = snapshot.val();
-      });
+      });  
+    });
+    database.ref("firstChoice").on("value", function (snapshot) {
+      playerOneChoice = snapshot.val();
       playerTwoPlays()
     });
   }
@@ -142,10 +139,9 @@ $(document).ready(function () {
         secondWins: playerTwoWins,
         secondLosses: playerTwoLosses
       });
-
-      database.ref("secondChoice").on("value", function (snapshot) {
-        playerTwoChoice = snapshot.val();
-      });
+    });
+    database.ref("secondChoice").on("value", function (snapshot) {
+      playerTwoChoice = snapshot.val();
       results();
     });
   }
