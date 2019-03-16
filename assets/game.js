@@ -60,8 +60,8 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref().on("value", function (snapshot) {
-        playerOne = snapshot.val().firstName;
+      database.ref("firstName").on("value", function (snapshot) {
+        playerOne = snapshot.val();
       });
       selectPlayerTwo()
     });
@@ -88,8 +88,8 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref().on("value", function (snapshot) {
-        playerTwo = snapshot.val().secondName;
+      database.ref("secondName").on("value", function (snapshot) {
+        playerTwo = snapshot.val();
       });
       playerOnePlays()
     });
@@ -116,8 +116,8 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref().on("value", function (snapshot) {
-        playerOneChoice = snapshot.val().firstChoice;
+      database.ref("firstChoice").on("value", function (snapshot) {
+        playerOneChoice = snapshot.val();
       });
       playerTwoPlays()
     });
@@ -143,8 +143,8 @@ $(document).ready(function () {
         secondLosses: playerTwoLosses
       });
 
-      database.ref().on("value", function (snapshot) {
-        playerTwoChoice = snapshot.val().secondChoice;
+      database.ref("secondChoice").on("value", function (snapshot) {
+        playerTwoChoice = snapshot.val();
       });
       results();
     });
@@ -220,20 +220,20 @@ $(document).ready(function () {
     }
   }
 
-  database.ref().on("value", function (snapshot) {
-    playerOneWins = snapshot.val().firstWins;
+  database.ref("firstWins").on("value", function (snapshot) {
+    playerOneWins = snapshot.val();
     $("#p1-wins").text("Wins: " + snapshot.val());
   });
-  database.ref().on("value", function (snapshot) {
-    playerOneLosses = snapshot.val().firstLosses;
+  database.ref("firstLosses").on("value", function (snapshot) {
+    playerOneLosses = snapshot.val();
     $("#p1-losses").text("Losses: " + snapshot.val());
   });
-  database.ref().on("value", function (snapshot) {
-    playerTwoWins = snapshot.val().secondWins;
+  database.ref("secondWins").on("value", function (snapshot) {
+    playerTwoWins = snapshot.val();
     $("#p2-wins").text("Wins: " + snapshot.val());
   });
-  database.ref().on("value", function (snapshot) {
-    playerTwoLosses = snapshot.val().secondLosses;
+  database.ref("secondLosses").on("value", function (snapshot) {
+    playerTwoLosses = snapshot.val();
     $("#p2-losses").text("Losses: " + snapshot.val());
   });
 
