@@ -60,7 +60,9 @@ $(document).ready(function () {
           secondLosses: playerTwoLosses
         });
 
-        selectPlayerTwo();
+        database.ref('firstName').on("value", function(snapshot) {
+          selectPlayerTwo()
+        });
       });
   }
 
@@ -85,7 +87,9 @@ $(document).ready(function () {
           secondLosses: playerTwoLosses
         });
 
-        playerOnePlays()
+        database.ref('secondName').on("value", function(snapshot) {
+          playerOnePlays()
+        });
       });
   }
 
@@ -110,7 +114,9 @@ $(document).ready(function () {
           secondLosses: playerTwoLosses
         });
 
-        playerTwoPlays();
+        database.ref('firstChoice').on("value", function(snapshot) {
+          playerTwoPlays()
+        });
       });
   }
 
@@ -134,7 +140,9 @@ $(document).ready(function () {
           secondLosses: playerTwoLosses
         });
 
-        results();
+        database.ref('secondChoice').on("value", function(snapshot) {
+          results();
+        });
       });
   }
 
